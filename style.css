@@ -123,45 +123,41 @@ nav a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
+  gap: 20px;
+  padding: 1rem;
 }
 
 .product-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
   width: 220px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .product-card img {
   width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-.product-card h3 {
-  margin: 0.8rem 0 0.5rem;
-  font-size: 1.1rem;
-  color: #2c3e50;
-}
+@media (max-width: 768px) {
+  .product-card {
+    width: 150px;
+    padding: 0.5rem;
+  }
 
-.product-card a {
-  text-decoration: none;
-  color: #0077cc;
-  font-weight: 500;
-}
+  .product-card img {
+    width: 100%;
+    max-height: 120px;
+  }
 
-.product-card a:hover {
-  color: #005a99;
+  .product-card h3 {
+    font-size: 1rem;
+  }
 }
 
 /* === Product Details Page === */
