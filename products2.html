@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product 1 - Temple Gold</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="product-detail">
+
+    <!-- Image Gallery -->
+    <div class="product-gallery">
+      <!-- Image Slider with arrows inside -->
+      <div class="slider-wrapper">
+        <div class="slider" id="slider">
+          <div class="slide"><img src="red main pack.jpg" alt="Image 1"></div>
+          <div class="slide"><img src="back pack.jpg" alt="Image 2"></div>
+          <div class="slide"><img src="reddd orange.png" alt="Image 3"></div>
+          <div class="slide"><img src="all.png" alt="Image 4"></div>
+        </div>
+
+        <!-- Arrows INSIDE slider-wrapper -->
+        <button class="arrow left" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="arrow right" onclick="moveSlide(1)">&#10095;</button>
+      </div>
+
+      <!-- Thumbnails -->
+      <div class="thumbnail-bar">
+        <img src="out maroon.jpg" onclick="goToSlide(0)" alt="Thumb 1">
+        <img src="back pack.jpg" onclick="goToSlide(1)" alt="Thumb 2">
+        <img src="maroon.png" onclick="goToSlide(2)" alt="Thumb 3">
+        <img src="all.png" onclick="goToSlide(3)" alt="Thumb 4">
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <h2>Temple Gold Red Kumkum</h2>
+    <p>This handcrafted Temple Gold product is perfect for traditional pooja and gifting purposes.</p>
+
+    <ul style="text-align: left; max-width: 600px; margin: 1rem auto;">
+      <li>✅ Pure and vibrant color</li>
+      <li>✅ Hand-packed for hygiene</li>
+      <li>✅ Multiple weight options</li>
+      <li>✅ Affordable and premium quality</li>
+    </ul>
+
+    <h3>Price Range: ₹23 – ₹415 (Based on weight)</h3>
+
+    <div class="size-selection">
+      <label for="weight">Select Weight:</label>
+      <select id="weight" name="weight" onchange="updateWhatsAppLink()">
+        <option value="" disabled selected>Select weight</option>
+        <option value="40g">40g - ₹23</option>
+        <option value="100g">100g - ₹55</option>
+        <option value="200g">200g - ₹108</option>
+        <option value="250g">250g - ₹122</option>
+        <option value="500g">500g - ₹225</option>
+        <option value="1000g">1000g - ₹415</option>
+      </select>
+    </div>
+
+    <!-- Quantity Selector -->
+      
+<div class="quantity-selection">
+  <label for="quantity">Quantity:</label>
+  <div class="quantity-controls">
+    <button type="button" onclick="changeQuantity(-1)">−</button>
+    <input type="text" id="quantity" name="quantity" value="1" readonly />
+    <button type="button" onclick="changeQuantity(1)">+</button>
+  </div>
+</div>
+
+    <a id="whatsapp-link" href="https://wa.me/917396315801" target="_blank" class="order-button">
+      Order Now on WhatsApp
+    </a>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+  function updateWhatsAppLink() {
+    const size = document.getElementById("weight").value;
+    const quantity = document.getElementById("quantity").value;
+    const productName = "Temple Gold Red Kumkum";
+
+    if (!size || !quantity) return;
+
+    const message = `I'm interested in buying *${productName}* in *${size}*, Quantity: *${quantity}*.`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/917396315801?text=${encodedMessage}`;
+
+    document.getElementById("whatsapp-link").href = whatsappURL;
+  }
+</script>
+<script>
+  const productName = "Temple Gold Red Kumkum";
+
+  function changeQuantity(amount) {
+    const input = document.getElementById("quantity");
+    let current = parseInt(input.value) || 1;
+    current += amount;
+    if (current < 1) current = 1;
+    input.value = current;
+    updateWhatsAppLink();
+  }
+
+  function updateWhatsAppLink() {
+    const size = document.getElementById("weight").value;
+    const quantity = document.getElementById("quantity").value;
+    const phoneNumber = "917396315801"; // Your WhatsApp number
+
+    if (size && quantity) {
+      const message = `I'm interested in buying *${productName}* in *${size}*, with quantity ${quantity}.`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      document.getElementById("whatsapp-link").href = whatsappURL;
+    }
+  }
+
+  // Trigger update when size changes
+  document.getElementById("weight").addEventListener("change", updateWhatsAppLink);
+</script>
+
+
+</body>
+</html>
