@@ -141,15 +141,9 @@ nav a:hover {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  /* Removed object-fit to avoid cropping */
-}
-
-/* Removed mobile-specific height restriction */
-@media (max-width: 768px) {
-  .product-card img {
-    width: 100%;
-    height: auto;
-  }
+  object-fit: contain; 
+  background-color: #fff; 
+  display: block;
 }
 
 /* === Product Details Page === */
