@@ -141,13 +141,14 @@ nav a:hover {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  object-fit: cover;
+  /* Removed object-fit to avoid cropping */
 }
 
+/* Removed mobile-specific height restriction */
 @media (max-width: 768px) {
   .product-card img {
-    height: 180px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
   }
 }
 
