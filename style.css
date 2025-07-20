@@ -127,6 +127,7 @@ nav a:hover {
   padding: 1rem;
 }
 
+/* Each product card */
 .product-card {
   width: 220px;
   border: 1px solid #ccc;
@@ -134,16 +135,22 @@ nav a:hover {
   padding: 1rem;
   text-align: center;
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Responsive image */
 .product-card img {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  object-fit: contain; 
-  background-color: #fff; 
-  display: block;
+  object-fit: contain;
+}
+
+/* 🟢 Optional: For mobile, show 2 cards side by side */
+@media (max-width: 768px) {
+  .product-card {
+    width: 45%;  /* 2 cards per row */
+  }
 }
 
 /* === Product Details Page === */
