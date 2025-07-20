@@ -140,22 +140,35 @@ nav a:hover {
 
 .product-card img {
   width: 100%;
-  height: auto;            /* Natural image height */
-  max-height: 320px;       /* Controls vertical size (you can adjust) */
-  object-fit: contain;     /* Prevents cropping */
+  height: auto;              /* Natural image height */
+  max-height: 320px;         /* Controls vertical size (adjust if needed) */
+  object-fit: contain;       /* Prevents cropping */
   border-radius: 8px;
   background-color: white;
-  padding: 10px;           /* Optional: adds some white space around the image */
+  padding: 2px;             /* Adds space around image */
   box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
   .product-card {
     width: 45%;
-    max-height: 240px;
+    max-width: 180px;
+    margin: auto;
     flex: 0 0 48%;
   }
+
+  .product-card img {
+    max-height: 240px;
+  }
 }
+
 
 /* === Product Details Page === */
 .product-detail {
