@@ -140,15 +140,15 @@ nav a:hover {
 
 .product-card img {
   width: 100%;
-  height: auto;
+  height: 300px;         
+  object-fit: contain;  
   border-radius: 8px;
-  object-fit: contain;
+  background-color: white;
 }
 
-/* 🟢 Optional: For mobile, show 2 cards side by side */
 @media (max-width: 768px) {
   .product-card {
-    width: 45%;  /* 2 cards per row */
+    width: 45%;  
     flex: 0 0 48%;
   }
 }
