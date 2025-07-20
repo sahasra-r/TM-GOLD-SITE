@@ -140,15 +140,19 @@ nav a:hover {
 
 .product-card img {
   width: 100%;
-  height: 300px;         
-  object-fit: contain;  
+  height: auto;            /* Natural image height */
+  max-height: 320px;       /* Controls vertical size (you can adjust) */
+  object-fit: contain;     /* Prevents cropping */
   border-radius: 8px;
   background-color: white;
+  padding: 10px;           /* Optional: adds some white space around the image */
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
   .product-card {
-    width: 45%;  
+    width: 45%;
+    max-height: 240px;
     flex: 0 0 48%;
   }
 }
