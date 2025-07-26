@@ -5,133 +5,64 @@
   <title>Your Cart</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .cart-container {
-      max-width: 700px;
-      margin: auto;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-    .cart-item {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .cart-item h3 {
-      margin: 0.2rem 0;
-    }
-    .whatsapp-btn {
-      margin-top: 20px;
-      background-color: #25d366;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-  </style>
 </head>
 <body>
   <main class="cart-container">
     <h1>Your Cart</h1>
     <div id="cart-items"></div>
-
-    <a id="whatsapp-send" href="#" target="_blank">
-      <button class="whatsapp-btn">Send Order on WhatsApp</button>
-    </a>
+    <button class="whatsapp-btn" onclick="sendOrderToWhatsApp()">Send Order on WhatsApp</button>
   </main>
 
   <script>
-    const cartData = JSON.parse(localStorage.getItem("cart")) || [];
-    const cartItemsContainer = document.getElementById("cart-items");
-    const whatsappLink = document.getElementById("whatsapp-send");
-
-    if (cartData.length === 0) {
-      cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
-      whatsappLink.style.display = "none";
-    } else {
-      let message = "🛒 *Temple Gold Order Summary*:%0A%0A";
+    function renderCart() {
+      const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("cart-items");
+      container.innerHTML = "";
 
       cartData.forEach((item, index) => {
-        const itemHTML = `
-          <div class="cart-item">
-            <h3>${item.name}</h3>
-            <p>Size: ${item.size}</p>
-            <p>Quantity: ${item.quantity}</p>
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "cart-item";
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" class="cart-thumb">
+          <div class="cart-text">
+            <h3>${item.name || "Unnamed Product"}</h3>
+            <p>Size: <span contenteditable="true" oninput="updateCartItem(${index}, 'size', this.innerText)">${item.size}</span></p>
+            <p>Quantity: <span contenteditable="true" oninput="updateCartItem(${index}, 'quantity', this.innerText)">${item.quantity}</span></p>
           </div>
+          <button onclick="removeCartItem(${index})" class="remove-btn">✖</button>
         `;
-        cartItemsContainer.innerHTML += itemHTML;
+        container.appendChild(itemDiv);
+      });
+    }
 
-        message += `${index + 1}. *${item.name}* - ${item.size}, Qty: ${item.quantity}%0A`;
+    function removeCartItem(index) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function updateCartItem(index, key, value) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart[index][key] = value;
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function sendOrderToWhatsApp() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (cart.length === 0) return alert("Your cart is empty!");
+
+      let message = "🛒 *Temple Gold Order Summary*:\n\n";
+      cart.forEach((item, i) => {
+        message += `${i + 1}. *${item.name || "Product"}*\nSize: ${item.size}, Qty: ${item.quantity}\n\n`;
       });
 
-      message += "%0APlease confirm the order.";
-
-      const encodedMessage = encodeURI(message);
-      whatsappLink.href = `https://wa.me/917396315801?text=${encodedMessage}`;
+      const encodedMessage = encodeURIComponent(message);
+      window.open(`https://wa.me/917396315801?text=${encodedMessage}`, "_blank");
     }
+
+    renderCart();
   </script>
-  <script>
-  function loadCart() {
-    const container = document.getElementById("cart-container");
-    container.innerHTML = ""; // Clear previous items
-
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    cart.forEach((item, index) => {
-      const div = document.createElement("div");
-      div.className = "cart-item";
-      div.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" style="max-width: 100px; border-radius: 8px; margin-bottom: 10px;" />
-        <h3>${item.name || "Unknown Product"}</h3>
-        <p>Size: ${item.size}</p>
-        <div class="quantity-controls">
-          <button onclick="changeQuantity(${index}, -1)">−</button>
-          <input type="text" value="${item.quantity}" readonly style="width: 40px; text-align:center;" />
-          <button onclick="changeQuantity(${index}, 1)">+</button>
-        </div>
-        <button onclick="removeItem(${index})" class="remove-btn">Remove</button>
-      `;
-      container.appendChild(div);
-    });
-  }
-
-  function changeQuantity(index, delta) {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart[index].quantity = parseInt(cart[index].quantity) + delta;
-    if (cart[index].quantity < 1) cart[index].quantity = 1;
-    localStorage.setItem("cart", JSON.stringify(cart));
-    loadCart();
-  }
-
-  function removeItem(index) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.splice(index, 1); // Remove the item
-    localStorage.setItem("cart", JSON.stringify(cart));
-    loadCart();
-  }
-
-  function sendToWhatsApp() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (!cart.length) return alert("Your cart is empty!");
-
-    let message = "Order Details:\n";
-    cart.forEach(item => {
-      message += `• ${item.name} - ${item.size} x ${item.quantity}\n`;
-    });
-
-    const encoded = encodeURIComponent(message);
-    const url = `https://wa.me/917396315801?text=${encoded}`;
-    window.open(url, "_blank");
-  }
-
-  // Load cart on page load
-  loadCart();
-</script>
-
 </body>
 </html>
+
