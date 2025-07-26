@@ -75,5 +75,63 @@
       whatsappLink.href = `https://wa.me/917396315801?text=${encodedMessage}`;
     }
   </script>
+  <script>
+  function loadCart() {
+    const container = document.getElementById("cart-container");
+    container.innerHTML = ""; // Clear previous items
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" style="max-width: 100px; border-radius: 8px; margin-bottom: 10px;" />
+        <h3>${item.name || "Unknown Product"}</h3>
+        <p>Size: ${item.size}</p>
+        <div class="quantity-controls">
+          <button onclick="changeQuantity(${index}, -1)">−</button>
+          <input type="text" value="${item.quantity}" readonly style="width: 40px; text-align:center;" />
+          <button onclick="changeQuantity(${index}, 1)">+</button>
+        </div>
+        <button onclick="removeItem(${index})" class="remove-btn">Remove</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function changeQuantity(index, delta) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart[index].quantity = parseInt(cart[index].quantity) + delta;
+    if (cart[index].quantity < 1) cart[index].quantity = 1;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+  }
+
+  function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1); // Remove the item
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+  }
+
+  function sendToWhatsApp() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    if (!cart.length) return alert("Your cart is empty!");
+
+    let message = "Order Details:\n";
+    cart.forEach(item => {
+      message += `• ${item.name} - ${item.size} x ${item.quantity}\n`;
+    });
+
+    const encoded = encodeURIComponent(message);
+    const url = `https://wa.me/917396315801?text=${encoded}`;
+    window.open(url, "_blank");
+  }
+
+  // Load cart on page load
+  loadCart();
+</script>
+
 </body>
 </html>
