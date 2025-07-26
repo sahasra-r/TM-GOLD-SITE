@@ -26,9 +26,12 @@
           <img src="${item.image}" alt="${item.name}" class="cart-thumb">
           <div class="cart-text">
             <h3>${item.name || "Unnamed Product"}</h3>
-            <p>Size: <span contenteditable="true" oninput="updateCartItem(${index}, 'size', this.innerText)">${item.size}</span></p>
-            <p>Quantity: <span contenteditable="true" oninput="updateCartItem(${index}, 'quantity', this.innerText)">${item.quantity}</span></p>
-            <p>Price: ₹<span contenteditable="true" oninput="updateCartItem(${index}, 'price', this.innerText)">${item.price || 0}</span></p>
+            <p>Size: ${item.size}</p>
+            <div class="quantity-controls">
+              <button onclick="updateQuantity(${index}, -1)">−</button>
+              <input type="text" value="${item.quantity}" readonly>
+              <button onclick="updateQuantity(${index}, 1)">+</button>
+            </div>
           </div>
           <button onclick="removeCartItem(${index})" class="remove-btn">✖</button>
         `;
@@ -36,10 +39,14 @@
       });
     }
 
-    function updateCartItem(index, key, value) {
+    function updateQuantity(index, amount) {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart[index][key] = value;
+      let qty = parseInt(cart[index].quantity) || 1;
+      qty += amount;
+      if (qty < 1) qty = 1;
+      cart[index].quantity = qty;
       localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
     }
 
     function removeCartItem(index) {
@@ -55,7 +62,7 @@
 
       let message = "🛒 *Temple Gold Order Summary*:\n\n";
       cart.forEach((item, i) => {
-        message += `${i + 1}. *${item.name || "Product"}*\nSize: ${item.size}, Qty: ${item.quantity}, Price: ₹${item.price || 0}\n\n`;
+        message += `${i + 1}. *${item.name || "Product"}*\nSize: ${item.size}, Qty: ${item.quantity}\n\n`;
       });
 
       const encodedMessage = encodeURIComponent(message);
