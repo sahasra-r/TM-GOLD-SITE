@@ -31,6 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
     handleGesture();
   });
 
+  const cartItem = {
+  name: "Red Kumkum",
+  size: selectedSize,
+  quantity: selectedQuantity
+};
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push(cartItem);
+localStorage.setItem("cart", JSON.stringify(cart));
+
+
   function changeQuantity(amount) {
   const input = document.getElementById("quantity");
   let current = parseInt(input.value) || 1;
