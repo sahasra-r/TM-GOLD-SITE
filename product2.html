@@ -71,27 +71,13 @@
   </div>
 </div>
 
-    <a id="whatsapp-link" href="https://wa.me/917396315801" target="_blank" class="order-button">
-      Order Now on WhatsApp
-    </a>
+    <!-- Cart Button -->
+<button class="order-button" onclick="addToCart()">Add to Cart</button>
+
   </main>
 
   <script src="script.js"></script>
-  <script>
-  function updateWhatsAppLink() {
-    const size = document.getElementById("weight").value;
-    const quantity = document.getElementById("quantity").value;
-    const productName = "Temple Gold Red Kumkum";
-
-    if (!size || !quantity) return;
-
-    const message = `I'm interested in buying *${productName}* in *${size}*, Quantity: *${quantity}*.`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/917396315801?text=${encodedMessage}`;
-
-    document.getElementById("whatsapp-link").href = whatsappURL;
-  }
-</script>
+<script src="script.js"></script>
 <script>
   const productName = "Temple Gold Maroon Kumkum";
 
@@ -101,25 +87,32 @@
     current += amount;
     if (current < 1) current = 1;
     input.value = current;
-    updateWhatsAppLink();
   }
 
-  function updateWhatsAppLink() {
+  function addToCart() {
     const size = document.getElementById("weight").value;
     const quantity = document.getElementById("quantity").value;
-    const phoneNumber = "917396315801"; // Your WhatsApp number
 
-    if (size && quantity) {
-      const message = `I'm interested in buying *${productName}* in *${size}*, with quantity ${quantity}.`;
-      const encodedMessage = encodeURIComponent(message);
-      const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-      document.getElementById("whatsapp-link").href = whatsappURL;
+    if (!size || !quantity) {
+      alert("Please select a weight and quantity before adding to cart.");
+      return;
     }
-  }
 
-  // Trigger update when size changes
-  document.getElementById("weight").addEventListener("change", updateWhatsAppLink);
+    const cartItem = {
+      product: productName,
+      size: size,
+      quantity: quantity
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(cartItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Product added to cart!");
+    window.location.href = "cart.html"; // redirect to cart page
+  }
 </script>
+
 
 
 </body>
