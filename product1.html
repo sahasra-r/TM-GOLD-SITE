@@ -127,6 +127,31 @@
       slider.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
   </script>
+
+  <script>
+  function addToCart() {
+    const size = document.getElementById("weight").value;
+    const quantity = document.getElementById("quantity").value;
+    const productName = "TMGold Red Kumkum"; 
+    const productImage = "red main pack.jpg";  
+
+    if (!size || !quantity) return;
+
+    const product = {
+      name: productName,
+      size: size,
+      quantity: quantity,
+      image: productImage
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    window.location.href = "cart.html";
+  }
+</script>
+
 </body>
 </html>
 
