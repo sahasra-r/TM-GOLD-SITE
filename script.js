@@ -50,6 +50,19 @@ localStorage.setItem("cart", JSON.stringify(cart));
   updateWhatsAppLink();
 }
 
+cart.forEach(item => {
+  const div = document.createElement("div");
+  div.className = "cart-item";
+
+  div.innerHTML = `
+    <img src="${item.image}" alt="${item.name}" style="max-width: 120px; border-radius: 8px; margin-bottom: 10px;" />
+    <h3>${item.name}</h3>
+    <p>Size: ${item.size}</p>
+    <p>Quantity: ${item.quantity}</p>
+  `;
+  container.appendChild(div);
+});
+
 
   function handleGesture() {
     if (touchEndX < touchStartX - 50) {
