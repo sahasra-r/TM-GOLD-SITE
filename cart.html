@@ -28,11 +28,18 @@
             <h3>${item.name || "Unnamed Product"}</h3>
             <p>Size: <span contenteditable="true" oninput="updateCartItem(${index}, 'size', this.innerText)">${item.size}</span></p>
             <p>Quantity: <span contenteditable="true" oninput="updateCartItem(${index}, 'quantity', this.innerText)">${item.quantity}</span></p>
+            <p>Price: ₹<span contenteditable="true" oninput="updateCartItem(${index}, 'price', this.innerText)">${item.price || 0}</span></p>
           </div>
           <button onclick="removeCartItem(${index})" class="remove-btn">✖</button>
         `;
         container.appendChild(itemDiv);
       });
+    }
+
+    function updateCartItem(index, key, value) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart[index][key] = value;
+      localStorage.setItem("cart", JSON.stringify(cart));
     }
 
     function removeCartItem(index) {
@@ -42,19 +49,13 @@
       renderCart();
     }
 
-    function updateCartItem(index, key, value) {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart[index][key] = value;
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
-
     function sendOrderToWhatsApp() {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       if (cart.length === 0) return alert("Your cart is empty!");
 
       let message = "🛒 *Temple Gold Order Summary*:\n\n";
       cart.forEach((item, i) => {
-        message += `${i + 1}. *${item.name || "Product"}*\nSize: ${item.size}, Qty: ${item.quantity}\n\n`;
+        message += `${i + 1}. *${item.name || "Product"}*\nSize: ${item.size}, Qty: ${item.quantity}, Price: ₹${item.price || 0}\n\n`;
       });
 
       const encodedMessage = encodeURIComponent(message);
@@ -65,4 +66,3 @@
   </script>
 </body>
 </html>
-
