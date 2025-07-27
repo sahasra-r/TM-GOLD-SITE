@@ -27,11 +27,24 @@
         <a href="product2.html">View Details</a>
       </div>
     </section>
-    
+
     <div class="view-cart-wrapper">
   <a href="cart.html" class="view-cart-button" id="view-cart-btn">🛒 View Cart</a>
 </div>
 
   </main>
+
+  <script>
+  // This updates the cart button with the number of items
+  function updateCartCount() {
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const btn = document.getElementById("view-cart-btn");
+    if (cartItems.length > 0) {
+      btn.textContent = `🛒 View Cart (${cartItems.length} item${cartItems.length > 1 ? 's' : ''})`;
+    }
+  }
+  updateCartCount();
+</script>
+
 </body>
 </html>
