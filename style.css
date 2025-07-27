@@ -574,6 +574,14 @@ nav a:hover {
   border: 1px solid #ccc;
 }
 
+.cart-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
 .quantity-controls {
   display: flex;
   align-items: center;
