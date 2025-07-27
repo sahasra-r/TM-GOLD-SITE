@@ -640,3 +640,18 @@ nav a:hover {
   background-color: #1a242f;
 }
 
+/* cart symbol */
+.view-cart-icon {
+  font-size: 24px;
+  margin-left: 15px;
+  text-decoration: none;
+  color: #333;
+  background: #f3f3f3;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.view-cart-icon:hover {
+  background: #ddd;
+}
