@@ -119,10 +119,13 @@
   function addToCart() {
     const size = document.getElementById("weight").value;
     const quantity = document.getElementById("quantity").value;
-    const productName = "TMGold Maroon Kumkum"; 
-    const productImage = "out maroon.jpg";   
+    const productName = "TMGold Maroon Kumkum";
+    const productImage = "out maroon.jpg"; 
 
-    if (!size || !quantity) return;
+    if (!size || !quantity) {
+      alert("Please select a weight and quantity before adding to cart.");
+      return;
+    }
 
     const product = {
       name: productName,
@@ -138,6 +141,7 @@
     window.location.href = "cart.html";
   }
 </script>
+
 
 <!-- Update Cart Icon -->
 <script>
