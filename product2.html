@@ -115,5 +115,17 @@
   }
 </script>
 
+<!-- Update Cart Icon -->
+<script>
+  function updateCartIcon() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const icon = document.getElementById("view-cart-icon");
+    icon.textContent = `🛒 (${cart.length})`;
+  }
+
+  updateCartIcon();
+</script>
+
+
 </body>
 </html>
