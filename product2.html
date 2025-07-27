@@ -79,7 +79,7 @@
   </main>
 
   <script src="script.js"></script>
-<script src="script.js"></script>
+
 <script>
   const productName = "Temple Gold Maroon Kumkum";
 
@@ -112,6 +112,30 @@
 
     alert("Product added to cart!");
     window.location.href = "cart.html"; // redirect to cart page
+  }
+</script>
+
+ <script>
+  function addToCart() {
+    const size = document.getElementById("weight").value;
+    const quantity = document.getElementById("quantity").value;
+    const productName = "TMGold Maroon Kumkum"; 
+    const productImage = "out maroon.png";  
+
+    if (!size || !quantity) return;
+
+    const product = {
+      name: productName,
+      size: size,
+      quantity: quantity,
+      image: productImage
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    window.location.href = "cart.html";
   }
 </script>
 
