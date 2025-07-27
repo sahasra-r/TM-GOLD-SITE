@@ -14,19 +14,37 @@
   </main>
 
   <script>
+    const sizes = [
+      "40g - ₹23",
+      "100g - ₹55",
+      "200g - ₹108",
+      "250g - ₹122",
+      "500g - ₹225",
+      "1000g - ₹415"
+    ];
+
     function renderCart() {
-      const cartData = JSON.parse(localStorage.getItem("cart")) || [];
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const container = document.getElementById("cart-items");
       container.innerHTML = "";
 
-      cartData.forEach((item, index) => {
+      cart.forEach((item, index) => {
         const itemDiv = document.createElement("div");
         itemDiv.className = "cart-item";
+
+        const sizeOptions = sizes.map(size => 
+          `<option value="${size}" ${item.size === size ? 'selected' : ''}>${size}</option>`
+        ).join("");
+
         itemDiv.innerHTML = `
           <img src="${item.image}" alt="${item.name}" class="cart-thumb">
           <div class="cart-text">
             <h3>${item.name || "Unnamed Product"}</h3>
-            <p>Size: ${item.size}</p>
+            <label for="size-${index}">Size:</label>
+            <select id="size-${index}" onchange="updateSize(${index}, this.value)">
+              ${sizeOptions}
+            </select>
+
             <div class="quantity-controls">
               <button onclick="updateQuantity(${index}, -1)">−</button>
               <input type="text" value="${item.quantity}" readonly>
@@ -35,6 +53,7 @@
           </div>
           <button onclick="removeCartItem(${index})" class="remove-btn">✖</button>
         `;
+
         container.appendChild(itemDiv);
       });
     }
@@ -45,6 +64,13 @@
       qty += amount;
       if (qty < 1) qty = 1;
       cart[index].quantity = qty;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function updateSize(index, newSize) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart[index].size = newSize;
       localStorage.setItem("cart", JSON.stringify(cart));
       renderCart();
     }
