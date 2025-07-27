@@ -77,3 +77,20 @@ cart.forEach(item => {
   window.goToSlide = goToSlide;
   window.moveSlide = moveSlide;
 });
+
+cart.forEach((item, index) => {
+  const div = document.createElement("div");
+  div.className = "cart-item";
+  div.innerHTML = `
+    <img src="${item.image}" alt="${item.name}" class="cart-img"/>
+    <h3>${item.name}</h3>
+    <p>Size: ${item.size}</p>
+    <div class="quantity-controls">
+      <button onclick="changeQuantity(${index}, -1)">−</button>
+      <span>${item.quantity}</span>
+      <button onclick="changeQuantity(${index}, 1)">+</button>
+    </div>
+    <button onclick="removeItem(${index})">Remove</button>
+  `;
+  cartContainer.appendChild(div);
+});
