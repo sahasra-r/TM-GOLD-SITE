@@ -86,7 +86,7 @@
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       if (cart.length === 0) return alert("Your cart is empty!");
 
-      let message = "🛒 *Temple Gold Order Summary*:\n\n";
+      let message = "🛒 *TM Gold Products Order Summary*:\n\n";
       cart.forEach((item, i) => {
         message += `${i + 1}. *${item.name || "Product"}*\nSize: ${item.size}, Qty: ${item.quantity}\n\n`;
       });

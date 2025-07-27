@@ -115,19 +115,19 @@
   }
 </script>
 
- <script>
+<script>
   function addToCart() {
     const size = document.getElementById("weight").value;
     const quantity = document.getElementById("quantity").value;
     const productName = "TMGold Maroon Kumkum";
-    const productImage = "out maroon.jpg"; 
+    const productImage = "out maroon.png";
 
     if (!size || !quantity) {
-      alert("Please select a weight and quantity before adding to cart.");
+      alert("Please select a size and quantity before adding to cart.");
       return;
     }
 
-    const product = {
+    const cartItem = {
       name: productName,
       size: size,
       quantity: quantity,
@@ -135,12 +135,14 @@
     };
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(product);
+    cart.push(cartItem);
     localStorage.setItem("cart", JSON.stringify(cart));
 
+    alert("Product added to cart!");
     window.location.href = "cart.html";
   }
 </script>
+
 
 
 <!-- Update Cart Icon -->
