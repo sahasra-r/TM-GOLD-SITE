@@ -9,14 +9,19 @@
 <body>
   <main class="cart-container">
     <h1>Your Cart</h1>
-   <div class="cart-actions">
-  <a href="products.html" class="more-products-btn">➕ Add More Products</a>
-</div>
 
-<div class="whatsapp-footer">
-  <button id="whatsapp-button" onclick="sendOrder()">Send Order on WhatsApp</button>
-</div>
- 
+    <!-- ✅ Add missing cart container -->
+    <div id="cart-items"></div>
+
+    <!-- ✅ Add More Products button -->
+    <div class="cart-actions">
+      <a href="products.html" class="more-products-btn">➕ Add More Products</a>
+    </div>
+
+    <!-- ✅ WhatsApp sticky footer -->
+    <div class="whatsapp-footer">
+      <button id="whatsapp-button" onclick="sendOrderToWhatsApp()">Send Order on WhatsApp</button>
+    </div>
   </main>
 
   <script>
@@ -33,6 +38,11 @@
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const container = document.getElementById("cart-items");
       container.innerHTML = "";
+
+      if (cart.length === 0) {
+        container.innerHTML = `<p style="text-align:center; font-size: 18px; margin: 2rem 0;">🛍️ Your cart is empty. <br><a href='products.html' style='color:#007bff;'>Add products to shop</a></p>`;
+        return;
+      }
 
       cart.forEach((item, index) => {
         const itemDiv = document.createElement("div");
