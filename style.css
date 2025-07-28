@@ -617,16 +617,55 @@ nav a:hover {
   margin-left: auto;
 }
 
+/* btns in cart */
+.cart-actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
 
-.whatsapp-btn {
-  margin-top: 20px;
+.more-products-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.whatsapp-footer {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 1rem 0;
+  text-align: center;
+  z-index: 10;
+  border-top: 1px solid #ddd;
+}
+
+#whatsapp-button {
   background-color: #25d366;
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
   font-size: 1rem;
-  border-radius: 6px;
   cursor: pointer;
+}
+
+/* Floating Cart Icon */
+.floating-cart-icon {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background-color: #ff4081;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
 }
 
 /* View Cart Button */
