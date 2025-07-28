@@ -663,15 +663,12 @@ nav a:hover {
 .view-cart-icon:hover {
   background: #ddd;
 }
+
 /* about page css */
 .about-hero {
   position: relative;
-  background: url('kumkk.png') no-repeat center center/cover;
-  color: white;
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: bold;
-  padding: 100px 20px;
+  background: url('background.jpg') no-repeat center center/cover;
+  height: 300px;
   overflow: hidden;
 }
 
@@ -680,43 +677,58 @@ nav a:hover {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background: inherit;
-  filter: blur(8px);
-  z-index: 0;
-  transform: scale(1.05); 
+  filter: blur(10px);
+  transform: scale(1.1);
+  z-index: 1;
 }
 
 .about-hero::after {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* dark overlay */
-  z-index: 1;
-}
-
-.about-hero {
-  position: relative;
-  z-index: 2; /* puts text above blur */
-}
-
-/* Content styling */
-.about-content {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  position: relative;
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 2;
 }
 
-.about-section h2 {
+.hero-text {
+  position: relative;
+  z-index: 3;
+  color: #fff;
   text-align: center;
-  margin-top: 2rem;
+  padding: 80px 20px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Content Styling */
+.about-content {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #222;
+}
+
+.about-content h2 {
+  text-align: center;
+  margin-top: 2.5rem;
   color: #b87333;
 }
 
 .product-list {
-  padding-left: 1rem;
+  list-style-type: disc;
+  padding-left: 1.5rem;
   margin-top: 1rem;
 }
 
@@ -724,14 +736,18 @@ nav a:hover {
   margin-bottom: 0.8rem;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-  .about-hero {
-    font-size: 1.2rem;
-    padding: 60px 10px;
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
   }
 
   .about-content {
     font-size: 1rem;
+    padding: 0 1rem;
   }
 }
-
