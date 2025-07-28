@@ -617,21 +617,6 @@ nav a:hover {
   margin-left: auto;
 }
 
-@media (max-width: 600px) {
-  .cart-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .remove-btn {
-    align-self: flex-end;
-    margin-top: 10px;
-  }
-
-  .quantity-controls {
-    flex-wrap: wrap;
-  }
-}
 
 .whatsapp-btn {
   margin-top: 20px;
