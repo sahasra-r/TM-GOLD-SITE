@@ -70,9 +70,8 @@
 
     function updateSize(index, newSize) {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart[index].size = newSize;
+      cart[index].size = newSize.trim();
       localStorage.setItem("cart", JSON.stringify(cart));
-      renderCart();
     }
 
     function removeCartItem(index) {
