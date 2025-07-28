@@ -85,20 +85,6 @@
       input.value = current;
     }
 
-    function addToCart(productName) {
-      const size = document.getElementById("weight").value;
-      const quantity = document.getElementById("quantity").value;
-
-      if (!size || !quantity) {
-        alert("Please select a size and quantity");
-        return;
-      }
-
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push({ name: productName, size, quantity });
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert("Product added to cart!");
-    }
 
     // Image slider logic (unchanged)
     let currentSlide = 0;
@@ -132,12 +118,15 @@
   function addToCart() {
     const size = document.getElementById("weight").value;
     const quantity = document.getElementById("quantity").value;
-    const productName = "TMGold Red Kumkum"; 
-    const productImage = "red main pack.jpg";  
+    const productName = "TMGold Red Kumkum";
+    const productImage = "red main pack.jpg";
 
-    if (!size || !quantity) return;
+    if (!size || !quantity) {
+      alert("Please select a size and quantity before adding to cart.");
+      return;
+    }
 
-    const product = {
+    const cartItem = {
       name: productName,
       size: size,
       quantity: quantity,
@@ -145,9 +134,10 @@
     };
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(product);
+    cart.push(cartItem);
     localStorage.setItem("cart", JSON.stringify(cart));
 
+    alert("Product added to cart!");
     window.location.href = "cart.html";
   }
 </script>
