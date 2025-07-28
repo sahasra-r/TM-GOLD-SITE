@@ -653,12 +653,21 @@ nav a:hover {
   cursor: pointer;
 }
 
+.cart-actions {
+  margin-bottom: 1rem;
+}
+
+.whatsapp-footer {
+  margin-top: 1rem;
+}
+
+
 /* Floating Cart Icon */
 .floating-cart-icon {
   position: fixed;
   top: 16px;
   right: 16px;
-  background-color: #1a1ac0;
+  background-color: #09972d;
   color: white;
   padding: 8px 14px;
   border-radius: 50px;
