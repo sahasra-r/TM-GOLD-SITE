@@ -76,45 +76,19 @@
   </main>
 
   <script src="script.js"></script>
-  <script>
-    function changeQuantity(amount) {
-      const input = document.getElementById("quantity");
-      let current = parseInt(input.value) || 1;
-      current += amount;
-      if (current < 1) current = 1;
-      input.value = current;
-    }
+<script>
+  const productName = "TM Gold Red Kumkum";
 
+  function changeQuantity(amount) {
+    const input = document.getElementById("quantity");
+    let current = parseInt(input.value) || 1;
+    current += amount;
+    if (current < 1) current = 1;
+    input.value = current;
+  }
+</script>
 
-    // Image slider logic (unchanged)
-    let currentSlide = 0;
-    const slider = document.getElementById("slider");
-    const slides = document.querySelectorAll(".slide");
-    const totalSlides = slides.length;
-
-    function moveSlide(direction) {
-      currentSlide += direction;
-      if (currentSlide < 0) currentSlide = totalSlides - 1;
-      if (currentSlide >= totalSlides) currentSlide = 0;
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    // Swipe support
-    let touchStartX = 0, touchEndX = 0;
-    slider.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-    slider.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      if (touchEndX < touchStartX - 50) moveSlide(1);
-      if (touchEndX > touchStartX + 50) moveSlide(-1);
-    });
-
-    function goToSlide(index) {
-      currentSlide = index;
-      slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-  </script>
-
-  <script>
+<script>
   function addToCart() {
     const size = document.getElementById("weight").value;
     const quantity = document.getElementById("quantity").value;
