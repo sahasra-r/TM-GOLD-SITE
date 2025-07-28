@@ -727,9 +727,11 @@ nav a:hover {
 }
 
 .product-list {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #333;
+  text-align: center;
+  line-height: 1.8;
+  margin: 1rem auto 2rem;
 }
 
 .product-list li {
