@@ -33,8 +33,7 @@
         itemDiv.className = "cart-item";
 
         const sizeOptions = sizes.map(size => 
-          `<option value="${size}" ${item.size === size ? 'selected' : ''}>${size}</option>`
-        ).join("");
+          `<option value="${size}" ${item.size.trim() === size.trim() ? 'selected' : ''}>${size}</option>`).join("");
 
         itemDiv.innerHTML = `
           <img src="${item.image}" alt="${item.name}" class="cart-thumb">
