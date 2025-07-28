@@ -90,29 +90,6 @@
     if (current < 1) current = 1;
     input.value = current;
   }
-
-  function addToCart() {
-    const size = document.getElementById("weight").value;
-    const quantity = document.getElementById("quantity").value;
-
-    if (!size || !quantity) {
-      alert("Please select a weight and quantity before adding to cart.");
-      return;
-    }
-
-    const cartItem = {
-      product: productName,
-      size: size,
-      quantity: quantity
-    };
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(cartItem);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    alert("Product added to cart!");
-    window.location.href = "cart.html"; // redirect to cart page
-  }
 </script>
 
 <script>
