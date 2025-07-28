@@ -679,6 +679,7 @@ nav a:hover {
 
 /* View Cart Button */
 .view-cart-wrapper {
+  position: sticky;
   text-align: center;
   margin: 2rem 0;
 }
