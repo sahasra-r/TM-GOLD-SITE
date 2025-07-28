@@ -249,8 +249,7 @@ nav a:hover {
   }
 }
 
-/* ==== Responsive Slider ==== */
-/* Slider Wrapper */
+/* === Slider Styles === */
 .slider-wrapper {
   position: relative;
   max-width: 100%;
@@ -259,13 +258,11 @@ nav a:hover {
   margin: 0 auto;
 }
 
-/* Slider Track */
 .slider {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
-/* Each Slide */
 .slide {
   min-width: 100%;
   display: flex;
@@ -275,7 +272,6 @@ nav a:hover {
   box-sizing: border-box;
 }
 
-/* Main Slider Images */
 .slide img {
   width: 100%;
   max-height: 350px;
@@ -283,7 +279,7 @@ nav a:hover {
   border-radius: 10px;
 }
 
-/* Show arrows on desktop only */
+/* Adjust for smaller devices */
 @media (max-width: 768px) {
   .slide img {
     max-height: 220px;
@@ -301,7 +297,7 @@ nav a:hover {
   padding: 10px 15px;
   cursor: pointer;
   z-index: 5;
-  display: none; /* hidden on mobile */
+  display: none;
 }
 
 .arrow.left {
