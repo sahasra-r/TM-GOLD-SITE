@@ -665,21 +665,48 @@ nav a:hover {
 }
 /* about page css */
 .about-hero {
-  background: url('kumk.jpg') no-repeat center center/cover;
-  padding: 100px 20px;
+  position: relative;
+  background: url('kumkk.png') no-repeat center center/cover;
   color: white;
   text-align: center;
   font-size: 1.8rem;
   font-weight: bold;
-  backdrop-filter: brightness(0.6);
+  padding: 100px 20px;
+  overflow: hidden;
 }
 
+.about-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: inherit;
+  filter: blur(8px);
+  z-index: 0;
+  transform: scale(1.05); 
+}
+
+.about-hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  z-index: 1;
+}
+
+.about-hero {
+  position: relative;
+  z-index: 2; /* puts text above blur */
+}
+
+/* Content styling */
 .about-content {
   max-width: 800px;
   margin: 2rem auto;
   padding: 0 1rem;
   font-size: 1.1rem;
   line-height: 1.8;
+  position: relative;
+  z-index: 2;
 }
 
 .about-section h2 {
@@ -707,3 +734,4 @@ nav a:hover {
     font-size: 1rem;
   }
 }
+
