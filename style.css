@@ -615,15 +615,46 @@ nav a:hover {
 /* checkboxes */
 .size-checkboxes {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .size-checkboxes label {
-  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
+
+.size-selection {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.size-selection label {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.size-checkboxes label:hover {
+  background: #ffeecf;
+  border-color: #ff9800;
+}
+
+.size-checkboxes input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #ff9800; /* Modern browsers */
+}
+
 
 /* btns in cart */
 .cart-actions {
