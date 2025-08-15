@@ -402,10 +402,9 @@ nav a:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
-  pointer-events: none; /* prevents manual edit */
+  pointer-events: none; 
 }
 
-/* Remove number arrows (spinner) from input in all browsers */
 .quantity-controls input[type=number]::-webkit-inner-spin-button,
 .quantity-controls input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -611,6 +610,19 @@ nav a:hover {
   font-size: 1rem;
   cursor: pointer;
   margin-left: auto;
+}
+
+/* checkboxes */
+.size-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.size-checkboxes label {
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 /* btns in cart */
