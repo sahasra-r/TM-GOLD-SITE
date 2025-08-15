@@ -48,21 +48,20 @@
 
     <h3>Price Range: ₹23 – ₹415 (Based on weight)</h3>
 
+    <!-- Size Selection -->
     <div class="size-selection">
-      <label for="weight">Select Weight:</label>
-      <select id="weight" name="weight" onchange="updateWhatsAppLink()">
-        <option value="" disabled selected>Select weight</option>
-        <option value="40g">40g - ₹23</option>
-        <option value="100g">100g - ₹55</option>
-        <option value="200g">200g - ₹108</option>
-        <option value="250g">250g - ₹122</option>
-        <option value="500g">500g - ₹225</option>
-        <option value="1000g">1000g - ₹415</option>
-      </select>
+      <label>Select Sizes:</label>
+        <div class="size-checkboxes">
+          <label><input type="checkbox" value="40g - ₹23"> 40g - ₹23</label>
+          <label><input type="checkbox" value="100g - ₹55"> 100g - ₹55</label>
+          <label><input type="checkbox" value="200g - ₹108"> 200g - ₹108</label>
+          <label><input type="checkbox" value="250g - ₹122"> 250g - ₹122</label>
+          <label><input type="checkbox" value="500g - ₹225"> 500g - ₹225</label>
+          <label><input type="checkbox" value="1000g - ₹415"> 1000g - ₹415</label>
+      </div>
     </div>
 
     <!-- Quantity Selector -->
-      
 <div class="quantity-selection">
   <label for="quantity">Quantity:</label>
   <div class="quantity-controls">
@@ -75,12 +74,10 @@
     <!-- Cart Button -->
 <button class="order-button" onclick="addToCart()">Add to Cart</button>
 
+    <!-- Floating Cart Icon -->
 <a href="cart.html" class="floating-cart-icon" id="view-cart-icon">🛒</a>
 
-
-
-  </main>
-
+</main>
 
 <script>
   const productName = "Temple Gold Maroon Kumkum";
@@ -95,31 +92,32 @@
 </script>
 
 <script>
-  function addToCart() {
-    const size = document.getElementById("weight").value;
-    const quantity = document.getElementById("quantity").value;
-    const productName = "TMGold Maroon Kumkum";
-    const productImage = "maroon outer.jpg";
+ function addToCart() {
+  const checkboxes = document.querySelectorAll(".size-checkboxes input[type='checkbox']:checked");
+  const quantity = parseInt(document.getElementById("quantity").value) || 1;
+  const productName = "TMGold Maroon Kumkum";
+  const productImage = "maroon outer.jpg";
 
-    if (!size || !quantity) {
-      alert("Please select a size and quantity before adding to cart.");
-      return;
-    }
+  if (checkboxes.length === 0) {
+    alert("Please select at least one size before adding to cart.");
+    return;
+  }
 
-    const cartItem = {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  checkboxes.forEach(cb => {
+    cart.push({
       name: productName,
-      size: size,
+      size: cb.value,
       quantity: quantity,
       image: productImage
-    };
+    });
+  });
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push(cartItem);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    alert("Product added to cart!");
-    window.location.href = "cart.html";
-  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Selected products added to cart!");
+  window.location.href = "cart.html";
+}
 </script>
 
 
