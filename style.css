@@ -260,6 +260,43 @@ nav a:hover {
   border-radius: 10px;
 }
 
+/* Floating Buttons - Common */
+.floating-cart,
+.floating-wishlist {
+    position: fixed;
+    top: 20px;
+    padding: 8px 15px;
+    border-radius: 20px; /* Oval shape */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 1000;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.floating-cart:hover,
+.floating-wishlist:hover {
+    transform: scale(1.05);
+}
+
+/* Cart button (Green) */
+.floating-cart {
+    right: 90px; /* keep some space for wishlist */
+    background: #28a745;
+}
+
+/* Wishlist button (Light Pink) */
+.floating-wishlist {
+    right: 20px;
+    background: #ff6f91;
+}
+
+
 @media (max-width: 768px) {
   .product-detail {
     padding: 1rem;
