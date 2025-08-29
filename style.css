@@ -208,42 +208,6 @@ nav a:hover {
   max-width: 300px;
 }
 
-/* Floating Buttons - Common */
-.floating-cart,
-.floating-wishlist {
-    position: fixed;
-    top: 20px;
-    padding: 8px 15px;
-    border-radius: 20px; /* Oval shape */
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    z-index: 1000;
-    transition: transform 0.2s ease, background 0.3s ease;
-}
-
-.floating-cart:hover,
-.floating-wishlist:hover {
-    transform: scale(1.05);
-}
-
-/* Cart button (Green) */
-.floating-cart {
-    right: 90px; /* keep some space for wishlist */
-    background: #28a745;
-}
-
-/* Wishlist button (Light Pink) */
-.floating-wishlist {
-    right: 20px;
-    background: #ff6f91;
-}
-
 @media (max-width: 768px) {
   .product-detail {
     padding: 1rem;
@@ -267,6 +231,77 @@ nav a:hover {
     font-size: 0.95rem;
   }
 }
+
+/* --- Floating Buttons (Top Right) --- */
+.floating-buttons {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.floating-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 50px; /* pill shape */
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.floating-buttons a:hover {
+  transform: scale(1.05);
+}
+
+.floating-wishlist {
+  background-color: #ff4f81; /* pinkish red */
+}
+
+.floating-cart {
+  background-color: #fbc02d; /* yellow */
+  color: #000; /* black text for better contrast */
+}
+
+/* --- Bottom Action Buttons --- */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.action-buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px; /* pill shape */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.action-buttons button:hover {
+  transform: translateY(-2px);
+}
+
+.add-to-cart {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.add-to-wishlist {
+  background-color: #ff4f81; /* Pinkish red */
+  color: white;
+}
+
 
 /* === Slider Styles === */
 .slider-wrapper {
