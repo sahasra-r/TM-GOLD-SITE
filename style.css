@@ -209,21 +209,36 @@ nav a:hover {
 }
 
 .product-actions {
-  display: inline-block;
-  background-color: #25d366;
-  color: white;
-  padding: 12px 24px;
-  font-size: 1rem;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-  margin-top: 1rem;
-  transition: background-color 0.3s ease;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
-.product-actions:hover {
-  background-color: #1ebd5a;
+.product-actions button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  background: #28a745;
+  color: white;
+  transition: 0.3s;
 }
+
+.product-actions button:hover {
+  background: #218838;
+}
+
+.product-actions button:last-child {
+  background: #ff4d6d;
+}
+
+.product-actions button:last-child:hover {
+  background: #e63e5c;
+}
+
 
 @media (max-width: 768px) {
   .product-detail {
