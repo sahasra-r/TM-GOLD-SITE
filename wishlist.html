@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Your Wishlist</h1>
+  </header>
+
+  <main id="wishlist-container"></main>
+
+  <script>
+    function loadWishlist() {
+      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      let container = document.getElementById("wishlist-container");
+      container.innerHTML = "";
+      wishlist.forEach((item, index) => {
+        container.innerHTML += `
+          <div class="wishlist-item">
+            <p>${item.name}</p>
+            <button onclick="moveToCart(${index})">Move to Cart</button>
+            <button onclick="removeFromWishlist(${index})">Remove</button>
+          </div>
+        `;
+      });
+    }
+
+    function moveToCart(index) {
+      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(wishlist[index]);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      wishlist.splice(index, 1);
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      loadWishlist();
+    }
+
+    function removeFromWishlist(index) {
+      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      wishlist.splice(index, 1);
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      loadWishlist();
+    }
+
+    window.onload = loadWishlist;
+  </script>
+</body>
+</html>
