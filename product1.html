@@ -72,14 +72,28 @@
       </div>
     </div>
 
-    <!-- Add to Cart Button -->
-    <button onclick="addToCart('Temple Gold Red Kumkum')" class="order-button">  Add to Cart </button>
+    <!-- Add to Cart and wishlist Button -->
+    <div class="product-actions">
+      <button onclick="addToCart('TM Gold Red Kumkum')">Add to Cart</button>
+      <button onclick="addToWishlist('TM Gold Red Kumkum')">Add to Wishlist</button>
+   </div>
 
-    <!-- Floating Cart Icon -->
-    <a href="cart.html" class="floating-cart-icon" id="view-cart-icon">🛒</a>
+<!-- Floating Cart Icon -->
+<a href="cart.html" class="floating-cart-icon" id="view-cart-icon">🛒</a>
+<!-- Floating Wishlist -->
+<a href="wishlist.html" class="floating-wishlist">❤️</a>
 
+<!-- Floating Cart count -->
+<a href="cart.html" class="floating-cart">
+  🛒 <span id="cart-count" class="count-badge">0</span>
+</a>
 
-  </main>
+<!-- Floating Wishlist count -->
+<a href="wishlist.html" class="floating-wishlist">
+  ❤️ <span id="wishlist-count" class="count-badge">0</span>
+</a>
+
+</main>
 
 <script>
   const productName = "TM Gold Red Kumkum";
@@ -91,9 +105,7 @@
     if (current < 1) current = 1;
     input.value = current;
   }
-</script>
 
-<script>
  function addToCart() {
   const checkboxes = document.querySelectorAll(".size-checkboxes input[type='checkbox']:checked");
   const quantity = parseInt(document.getElementById("quantity").value) || 1;
@@ -120,17 +132,23 @@
   alert("Selected products added to cart!");
   window.location.href = "cart.html";
 }
-</script>
 
-<!-- Update Cart Icon -->
-<script>
-  function updateCartIcon() {
+// Update Cart Icon
+function updateCartIcon() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const icon = document.getElementById("view-cart-icon");
     icon.textContent = `🛒 (${cart.length})`;
-  }
+}
+updateCartIcon();
 
-  updateCartIcon();
+// Add to Wishlist
+function addToWishlist(productName) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlist.push({ name: productName });
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    alert(productName + " added to wishlist!");
+}
+
 </script>
 
 

@@ -208,7 +208,7 @@ nav a:hover {
   max-width: 300px;
 }
 
-.order-button {
+.product-actions {
   display: inline-block;
   background-color: #25d366;
   color: white;
@@ -221,7 +221,7 @@ nav a:hover {
   transition: background-color 0.3s ease;
 }
 
-.order-button:hover {
+.product-actions:hover {
   background-color: #1ebd5a;
 }
 
@@ -738,6 +738,42 @@ nav a:hover {
 .view-cart-button:hover {
   background-color: #1a242f;
 }
+
+/* floating wishlist */
+.count-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: red;
+  color: white;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+.floating-cart, .floating-wishlist {
+  position: fixed;
+  bottom: 20px;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-size: 22px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+.floating-cart {
+  right: 20px;
+  background: #ffd700;
+  color: black;
+}
+.floating-wishlist {
+  right: 80px;
+  background: #ff4d6d;
+}
+.floating-cart:hover, .floating-wishlist:hover {
+  transform: scale(1.1);
+}
+
 
 /* cart symbol */
 .view-cart-icon {

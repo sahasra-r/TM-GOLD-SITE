@@ -94,3 +94,15 @@ function updateSize(index, newSize) {
   localStorage.setItem("cart", JSON.stringify(cart));
   location.reload();
 }
+
+function updateCounts() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+  
+  document.getElementById("cart-count").textContent = cart.length;
+  document.getElementById("wishlist-count").textContent = wishlist.length;
+}
+
+// Run on page load
+window.onload = updateCounts;
+
