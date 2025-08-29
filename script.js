@@ -98,11 +98,11 @@ function updateSize(index, newSize) {
 function updateCounts() {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-  
+
   document.getElementById("cart-count").textContent = cart.length;
   document.getElementById("wishlist-count").textContent = wishlist.length;
 }
 
-// Run on page load
-window.onload = updateCounts;
+window.addEventListener("load", updateCounts);
+
 
