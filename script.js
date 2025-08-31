@@ -130,4 +130,3 @@ document.getElementById("add-to-wishlist").addEventListener("click", function ()
     document.getElementById("wishlist-count").innerText = wishlist.length;
     alert("Added to Wishlist!");
 });
-

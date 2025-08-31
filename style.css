@@ -744,42 +744,6 @@ nav a:hover {
   background-color: #1a242f;
 }
 
-/* floating wishlist */
-.count-badge {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: red;
-  color: white;
-  font-size: 14px;
-  padding: 2px 6px;
-  border-radius: 50%;
-}
-.floating-cart, .floating-wishlist {
-  position: fixed;
-  bottom: 20px;
-  padding: 15px;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  font-size: 22px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
-}
-.floating-cart {
-  right: 20px;
-  background: #ffd700;
-  color: black;
-}
-.floating-wishlist {
-  right: 80px;
-  background: #ff4d6d;
-}
-.floating-cart:hover, .floating-wishlist:hover {
-  transform: scale(1.1);
-}
-
-
 /* cart symbol */
 .view-cart-icon {
   font-size: 24px;
