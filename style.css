@@ -233,12 +233,13 @@ nav a:hover {
 }
 
 /* Floating Buttons */
+/* Floating Buttons - Top Right */
 .floating-buttons {
     position: fixed;
-    top: 15px; 
-    right: 15px; 
+    top: 15px;       /* top-right corner */
+    right: 15px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;  /* side by side instead of column */
     gap: 10px;
     z-index: 1000;
 }
@@ -248,23 +249,26 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     padding: 6px 14px; 
-    border-radius: 50px;
+    border-radius: 50px; /* pill shape */
     font-size: 13px;
     font-weight: 600;
     color: #fff;
     text-decoration: none;
     box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
     transition: transform 0.2s, background 0.3s;
+    white-space: nowrap; /* keep text on one line */
 }
 
 .floating-buttons a:hover {
     transform: scale(1.07);
 }
 
+/* Wishlist button - Pink */
 .floating-wishlist {
     background-color: #ff4d6d;
 }
 
+/* Cart button - Green */
 .floating-cart {
     background-color: #28a745;
 }
