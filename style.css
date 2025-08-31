@@ -232,72 +232,42 @@ nav a:hover {
   }
 }
 
-/* Floating Icons - Move to Top Right */
-.floating-icons {
-  position: fixed;
-  top: 20px;   /* move from bottom to top */
-  right: 20px; /* stick to right side */
-  display: flex;
-  flex-direction: column; /* stack vertically */
-  gap: 10px;
-  z-index: 1000;
+/* Floating Buttons */
+.floating-buttons {
+    position: fixed;
+    top: 15px; 
+    right: 15px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
 }
 
-.floating-icons button {
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px; /* pill shape */
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease-in-out;
+.floating-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px; 
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background 0.3s;
 }
 
-.floating-icons button:hover {
-  transform: scale(1.05);
+.floating-buttons a:hover {
+    transform: scale(1.07);
 }
 
-#wishlist-btn {
-  background: #ff4b6e; /* pinkish red */
+.floating-wishlist {
+    background-color: #ff4d6d;
 }
 
-#cart-btn {
-  background: #1eb81c; 
-  color: black;
+.floating-cart {
+    background-color: #28a745;
 }
-
-.action-buttons {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-}
-
-.action-buttons button {
-  padding: 10px 25px;
-  border: none;
-  border-radius: 50px; 
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease-in-out;
-}
-
-.action-buttons button:hover {
-  transform: scale(1.05);
-}
-
-#add-to-cart {
-  background: #28a745; /* green */
-  color: white;
-}
-
-#add-to-wishlist {
-  background: #ff4b6e; /* pinkish red */
-  color: white;
-}
-
-
 
 /* === Slider Styles === */
 .slider-wrapper {
