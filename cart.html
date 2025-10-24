@@ -111,5 +111,37 @@
 
     renderCart();
   </script>
+  <script>
+  function loadCart() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let container = document.getElementById("cart-container");
+
+    if (cart.length === 0) {
+      container.innerHTML = "<p class='empty-msg'>Your cart is empty 🛒</p>";
+      return;
+    }
+
+    container.innerHTML = ""; // Clear previous
+
+    cart.forEach((item, index) => {
+      container.innerHTML += `
+        <div class="cart-item-card">
+          <p><b>${item.name}</b> | Size: ${item.size} | Qty: ${item.quantity}</p>
+          <button onclick="removeFromCart(${index})">❌ Remove</button>
+        </div>
+      `;
+    });
+  }
+
+  function removeFromCart(index) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+  }
+
+  window.onload = loadCart;
+</script>
+
 </body>
 </html>

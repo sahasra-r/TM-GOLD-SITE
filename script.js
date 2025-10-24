@@ -99,8 +99,11 @@ function updateCounts() {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-  document.getElementById("cart-count").textContent = cart.length;
-  document.getElementById("wishlist-count").textContent = wishlist.length;
+  let cartCount = document.getElementById("cart-count");
+  let wishlistCount = document.getElementById("wishlist-count");
+
+  if (cartCount) cartCount.textContent = cart.length;
+  if (wishlistCount) wishlistCount.textContent = wishlist.length;
 }
 
 window.addEventListener("load", updateCounts);

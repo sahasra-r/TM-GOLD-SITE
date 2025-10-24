@@ -50,24 +50,33 @@
       });
     }
 
-    function moveToCart(index) {
-      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push(wishlist[index]);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      wishlist.splice(index, 1);
-      localStorage.setItem('wishlist', JSON.stringify(wishlist));
-      loadWishlist();
-    }
+  function moveToCart(index) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    function moveAllToCart() {
-      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart = cart.concat(wishlist);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      localStorage.removeItem('wishlist');
-      loadWishlist();
-    }
+    cart.push(wishlist[index]);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    wishlist.splice(index, 1);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+    // ✅ Redirect to cart page
+    window.location.href = "cart.html";
+  }
+
+  function moveAllToCart() {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cart = cart.concat(wishlist);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Clear wishlist
+    localStorage.removeItem('wishlist');
+
+    // ✅ Redirect to cart page
+    window.location.href = "cart.html";
+  }
 
     function removeFromWishlist(index) {
       let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
