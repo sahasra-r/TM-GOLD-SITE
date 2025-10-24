@@ -11,19 +11,28 @@
     <h1>Your Wishlist</h1>
   </header>
 
-  <main id="wishlist-container"></main>
+  <main id="wishlist-container" class="wishlist-container"></main>
 
   <script>
     function loadWishlist() {
       let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
       let container = document.getElementById("wishlist-container");
+
+      if (wishlist.length === 0) {
+        container.innerHTML = "<p class='empty-msg'>Your wishlist is empty 💔</p>";
+        return;
+      }
+
       container.innerHTML = "";
       wishlist.forEach((item, index) => {
         container.innerHTML += `
-          <div class="wishlist-item">
-            <p>${item.name}</p>
-            <button onclick="moveToCart(${index})">Move to Cart</button>
-            <button onclick="removeFromWishlist(${index})">Remove</button>
+          <div class="wishlist-item-card">
+            <p class="wishlist-name">${item.name}</p>
+            <p class="wishlist-details">Size: <span>${item.size}</span> | Qty: <span>${item.quantity}</span></p>
+            <div class="wishlist-buttons">
+              <button class="btn btn-cart" onclick="moveToCart(${index})">🛒 Move to Cart</button>
+              <button class="btn btn-wishlist-remove" onclick="removeFromWishlist(${index})">❌ Remove</button>
+            </div>
           </div>
         `;
       });
@@ -37,6 +46,7 @@
       wishlist.splice(index, 1);
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
       loadWishlist();
+      alert("Moved to cart!");
     }
 
     function removeFromWishlist(index) {
@@ -44,6 +54,7 @@
       wishlist.splice(index, 1);
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
       loadWishlist();
+      alert("Removed from wishlist!");
     }
 
     window.onload = loadWishlist;

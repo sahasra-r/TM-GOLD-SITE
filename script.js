@@ -105,28 +105,4 @@ function updateCounts() {
 
 window.addEventListener("load", updateCounts);
 
-// Initialize Wishlist
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-document.getElementById("wishlist-count").innerText = wishlist.length;
 
-// Add to Wishlist Button
-document.getElementById("add-to-wishlist").addEventListener("click", function () {
-    let size = document.querySelector("input[name='size']:checked");
-    let qty = document.getElementById("quantity").value;
-
-    if (!size) {
-        alert("Please select a size before adding to wishlist.");
-        return;
-    }
-
-    let product = {
-        name: document.querySelector("h1").innerText,
-        size: size.value,
-        quantity: qty
-    };
-
-    wishlist.push(product);
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    document.getElementById("wishlist-count").innerText = wishlist.length;
-    alert("Added to Wishlist!");
-});
