@@ -106,31 +106,4 @@ function updateCounts() {
 window.addEventListener("load", updateCounts);
 
 // wishlist.js would go here if needed
-let addWishlistBtn = document.getElementById("add-to-wishlist");
-if (addWishlistBtn) {
-  addWishlistBtn.addEventListener("click", function () {
-    let size = document.querySelector("input[name='size']:checked");
-    let qty = document.getElementById("quantity").value;
-    let imgSrc = document.querySelector(".product-image img")?.src || "";
-
-    if (!size) return alert("Please select a size!");
-    if (!qty || qty <= 0) return alert("Please enter a valid quantity!");
-
-    let product = {
-      name: document.querySelector("h1").innerText.trim(),
-      size: size.value,
-      quantity: qty,
-      image: imgSrc
-    };
-
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    let exists = wishlist.some(item => item.name === product.name && item.size === product.size);
-    if (exists) return alert("Already in wishlist!");
-
-    wishlist.push(product);
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    updateCounts();
-    alert("Added to wishlist!");
-  });
-}
 
