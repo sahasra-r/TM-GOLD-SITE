@@ -7,8 +7,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
     <h1>Your Wishlist</h1>
+    <div class="wishlist-actions">
+      <button class="btn btn-home" onclick="window.location.href='index.html'">⬅ Back to Home</button>
+      <button class="btn btn-clear" onclick="clearWishlist()">🗑 Clear Wishlist</button>
+    </div>
   </header>
 
   <main id="wishlist-container" class="wishlist-container"></main>
@@ -23,12 +28,19 @@
         return;
       }
 
-      container.innerHTML = "";
+      container.innerHTML = `
+        <p class="wishlist-count">Total Items: <b>${wishlist.length}</b></p>
+        <button class="btn btn-cart-all" onclick="moveAllToCart()">Move All to Cart 🛒</button>
+      `;
+
       wishlist.forEach((item, index) => {
         container.innerHTML += `
           <div class="wishlist-item-card">
-            <p class="wishlist-name">${item.name}</p>
-            <p class="wishlist-details">Size: <span>${item.size}</span> | Qty: <span>${item.quantity}</span></p>
+            ${item.image ? `<img src="${item.image}" class="wishlist-img">` : ""}
+            <div class="wishlist-info">
+              <p class="wishlist-name">${item.name}</p>
+              <p class="wishlist-details">Size: <span>${item.size}</span> | Qty: <span>${item.quantity}</span></p>
+            </div>
             <div class="wishlist-buttons">
               <button class="btn btn-cart" onclick="moveToCart(${index})">🛒 Move to Cart</button>
               <button class="btn btn-wishlist-remove" onclick="removeFromWishlist(${index})">❌ Remove</button>
@@ -46,7 +58,15 @@
       wishlist.splice(index, 1);
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
       loadWishlist();
-      alert("Moved to cart!");
+    }
+
+    function moveAllToCart() {
+      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart = cart.concat(wishlist);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.removeItem('wishlist');
+      loadWishlist();
     }
 
     function removeFromWishlist(index) {
@@ -54,10 +74,17 @@
       wishlist.splice(index, 1);
       localStorage.setItem('wishlist', JSON.stringify(wishlist));
       loadWishlist();
-      alert("Removed from wishlist!");
+    }
+
+    function clearWishlist() {
+      if (confirm("Are you sure you want to clear your wishlist?")) {
+        localStorage.removeItem('wishlist');
+        loadWishlist();
+      }
     }
 
     window.onload = loadWishlist;
   </script>
+
 </body>
 </html>
