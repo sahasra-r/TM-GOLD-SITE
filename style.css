@@ -789,26 +789,20 @@ nav a:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    padding: 14px 26px;
-    margin-left: 15px;
-
-    background: #ff4d79;
+    gap: 8px;
+    padding: 14px 24px;
+    background: #b18592;
     color: white !important;
-
-    border-radius: 50px;
+    border-radius: 8px;
     text-decoration: none;
-
     font-size: 18px;
     font-weight: 600;
-
-    box-shadow: 0 4px 10px rgba(255, 77, 121, 0.25);
-
-    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: all 0.25s ease;
 }
 
 .view-wishlist-button:hover {
-    background: #ff2f66;
+    background: #bb6d83;
     transform: translateY(-2px);
 }
 
