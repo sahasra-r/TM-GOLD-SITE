@@ -48,9 +48,14 @@
         const itemDiv = document.createElement("div");
         itemDiv.className = "cart-item";
 
-        const sizeOptions = sizes.map(size => 
-          `<option value="${size}" ${item.size.trim() === size.trim() ? 'selected' : ''}>${size}</option>`).join("");
+        const currentSize = (item.size || "").trim();
 
+        const sizeOptions = sizes.map(size =>
+         `<option value="${size}" ${
+          currentSize === size.trim() ? "selected" : ""
+         }>${size}</option>`
+        ).join("");
+        
         itemDiv.innerHTML = `
           <img src="${item.image}" alt="${item.name}" class="cart-thumb">
           <div class="cart-text">
