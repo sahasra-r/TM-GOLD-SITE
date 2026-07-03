@@ -790,7 +790,9 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 14px 24px;
+    padding: 12px 22px;
+    height: 50px;        
+    min-width: 220px;
     background: #b18592;
     color: white !important;
     border-radius: 8px;
