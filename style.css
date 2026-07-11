@@ -786,26 +786,18 @@ nav a:hover {
 /* View Wishlist Button */
 
 .view-wishlist-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 22px;
-    height: 50px;        
-    min-width: 220px;
-    background: #b18592;
-    color: white !important;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    transition: all 0.25s ease;
+  background-color: #b18592;
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background 0.3s;
 }
 
 .view-wishlist-button:hover {
-    background: #bb6d83;
-    transform: translateY(-2px);
+  background-color: #bb6d83;
 }
 
 /* Buttons */
