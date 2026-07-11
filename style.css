@@ -800,6 +800,55 @@ nav a:hover {
   background-color: #bb6d83;
 }
 
+
+/* ============================= */
+/* Product Page Buttons */
+/* ============================= */
+
+.product-actions{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin:30px 0;
+    flex-wrap:wrap;
+}
+
+.add-cart-btn,
+.add-wishlist-btn{
+    border:none;
+    outline:none;
+    cursor:pointer;
+    padding:14px 28px;
+    font-size:17px;
+    font-weight:600;
+    border-radius:8px;
+    transition:0.3s ease;
+    min-width:210px;
+    color:white;
+}
+
+/* Cart */
+.add-cart-btn{
+    background:#28a745;
+}
+
+.add-cart-btn:hover{
+    background:#218838;
+    transform:translateY(-2px);
+}
+
+/* Wishlist */
+.add-wishlist-btn{
+    background:#c96d87;
+}
+
+.add-wishlist-btn:hover{
+    background:#bb5d79;
+    transform:translateY(-2px);
+}
+
+
+
 /* Buttons */
 .btn {
   padding: 10px 20px;
